@@ -1,0 +1,73 @@
+SELECT * FROM IMPIEGATO
+SELECT * FROM IMPIEGO
+
+--3
+
+-- A
+SELECT * FROM IMPIEGATO WHERE (Eta > 29)
+
+SELECT Nome, Cognome, Eta, TipoImpiego FROM IMPIEGATO AS Dipendente 
+INNER JOIN 
+IMPIEGO AS IMPIEGO
+ON Dipendente.IDImpiegato = IMPIEGO.IDImpiegato
+WHERE (Eta > 29)
+
+-- B
+SELECT Nome, Cognome, RedditoMensile, TipoImpiego
+FROM IMPIEGATO
+INNER JOIN
+IMPIEGO
+ON IMPIEGATO.IDImpiegato = IMPIEGO.IDImpiegato 
+WHERE RedditoMensile >= 800
+
+-- C
+SELECT Nome, Cognome, DetrazioneFiscale, TipoImpiego
+FROM IMPIEGATO
+INNER JOIN
+IMPIEGO
+ON IMPIEGATO.IDImpiegato = IMPIEGO.IDImpiegato 
+WHERE DetrazioneFiscale = 1
+
+-- D
+SELECT Nome, Cognome, DetrazioneFiscale, TipoImpiego
+FROM IMPIEGATO
+INNER JOIN
+IMPIEGO
+ON IMPIEGATO.IDImpiegato = IMPIEGO.IDImpiegato 
+WHERE DetrazioneFiscale = 0
+
+-- E
+SELECT Nome, Cognome, TipoImpiego
+FROM IMPIEGATO
+INNER JOIN
+IMPIEGO
+ON IMPIEGATO.IDImpiegato = IMPIEGO.IDImpiegato 
+WHERE Cognome LIKE 'G%' 
+ORDER BY Cognome
+
+-- F
+SELECT Count(IDImpiegato) AS TotaleImpiegati FROM IMPIEGATO
+
+-- G
+SELECT Sum(RedditoMensile) AS TotaleReddito FROM IMPIEGATO
+
+-- H
+SELECT AVG(RedditoMensile) AS MediaReddito FROM IMPIEGATO
+
+-- i
+SELECT MAX(RedditoMensile) AS RedditoMax FROM IMPIEGATO
+
+-- J
+SELECT MIN(RedditoMensile) AS RedditoMin FROM IMPIEGATO
+
+-- K
+SELECT Nome, Cognome, Data_Assunzione FROM IMPIEGATO
+INNER JOIN
+IMPIEGO 
+ON IMPIEGATO.IDImpiegato = IMPIEGO.IDImpiegato 
+WHERE Data_Assunzione BETWEEN '2007-01-01' AND '2008-01-01'
+
+SELECT * FROM IMPIEGO
+
+-- M 
+SELECT AVG(Eta) AS EtaMedia FROM IMPIEGATO
